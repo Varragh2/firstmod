@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    " # ",
+    " # ",
+    " # "
+  ],
+  "key":
+  {
+    "#":
+    {
+      "item": "minecraft:cobblestone"
+    }
+  },
+  "result":
+  {
+    "item": "firstmod:rock",
+    "count": 5
+  }
+}
