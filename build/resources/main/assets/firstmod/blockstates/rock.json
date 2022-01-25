@@ -1,5 +1,16 @@
 {
   "variants": {
-    "": { "model": "firstmod:block/rock"}
+    "axis=x": {
+      "model": "firstmod:block/rock",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "firstmod:block/rock"
+    },
+    "axis=z": {
+      "model": "firstmod:block/rock",
+      "x": 90
+    }
   }
 }
