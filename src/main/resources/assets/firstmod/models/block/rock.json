@@ -1,11 +1,7 @@
 {
-  "parent": "block/cube",
+  "parent": "minecraft:block/cube_column",
   "textures": {
-    "up": "firstmod:block/rock",
-    "down": "firstmod:block/rock",
-    "north": "firstmod:block/rock",
-    "south": "firstmod:block/rock",
-    "west": "firstmod:block/rock",
-    "east": "firstmod:block/rock"
+    "end": { "uv": [8,8, 16,16], "texture": "firstmod:block/rock" },
+    "side": { "uv": [0,8, 8,16], "texture": "firstmod:block/rock" }
   }
 }

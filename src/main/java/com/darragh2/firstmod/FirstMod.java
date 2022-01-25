@@ -8,6 +8,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.client.event.ClientChatEvent;
@@ -49,7 +50,7 @@ public class FirstMod
     private static final Logger LOGGER = LogManager.getLogger();
 
     private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
-    public static final RegistryObject<Block> ROCK_BLOCK = BLOCKS.register("rock", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(0.5f).color(MaterialColor.COLOR_BLUE).dropsLike(Blocks.STONE)));
+    public static final RegistryObject<Block> ROCK_BLOCK = BLOCKS.register("rock", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f).color(MaterialColor.COLOR_BLUE).dropsLike(Blocks.STONE)));
 
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
     //public static final RegistryObject<Item> ROCK_ITEM = ITEMS.register("rock", () -> new Item(new Item.Properties().setNoRepair().durability(2)));
