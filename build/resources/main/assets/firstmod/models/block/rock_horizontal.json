@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": { "uv": [8,8, 16,16], "texture": "firstmod:block/rock" },
+    "side": { "uv": [0,8, 8,16], "texture": "firstmod:block/rock" }
+  }
+}
