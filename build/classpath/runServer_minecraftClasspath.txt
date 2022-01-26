@@ -16,7 +16,7 @@ C:\Users\Thomas Nolan\.gradle\caches\modules-2\files-2.1\net.minecraftforge\forg
 C:\Users\Thomas Nolan\.gradle\caches\modules-2\files-2.1\net.minecraftforge\eventbus\5.0.7\5589e7511c4993054e6a80890618b46ed53519a0\eventbus-5.0.7.jar
 C:\Users\Thomas Nolan\.gradle\caches\modules-2\files-2.1\cpw.mods\modlauncher\9.1.0\64d27cad2f5340065ed0b29f45a264ba47b1ee4f\modlauncher-9.1.0.jar
 C:\Users\Thomas Nolan\.gradle\caches\modules-2\files-2.1\cpw.mods\bootstraplauncher\1.0.0\f55ddbb35612c6745cefc47d1a0d6dbfb25d3982\bootstraplauncher-1.0.0.jar
-C:\Users\Thomas Nolan\.gradle\caches\modules-2\files-2.1\cpw.mods\securejarhandler\1.0.2\a7010a4110062e5d459fd96eb6fe3ef741b4ad20\securejarhandler-1.0.2.jar
+C:\Users\Thomas Nolan\.gradle\caches\modules-2\files-2.1\cpw.mods\securejarhandler\1.0.3\acbf5e3c8a38fb8bf824a54fe45eee121c510392\securejarhandler-1.0.3.jar
 C:\Users\Thomas Nolan\.gradle\caches\modules-2\files-2.1\org.openjdk.nashorn\nashorn-core\15.3\43977e804697048fc8d81d333a36c17d07a5b3dd\nashorn-core-15.3.jar
 C:\Users\Thomas Nolan\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-commons\9.2\f4d7f0fc9054386f2893b602454d48e07d4fbead\asm-commons-9.2.jar
 C:\Users\Thomas Nolan\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-util\9.2\fbc178fc5ba3dab50fd7e8a5317b8b647c8e8946\asm-util-9.2.jar

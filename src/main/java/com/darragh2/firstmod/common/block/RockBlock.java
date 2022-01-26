@@ -1,13 +1,23 @@
 package com.darragh2.firstmod.common.block;
 
+import com.darragh2.firstmod.FirstMod;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
 public class RockBlock  extends Block {
@@ -28,18 +38,45 @@ public class RockBlock  extends Block {
         super.createBlockStateDefinition(p_49915_);
     }
 
+    /**
+     * @param p_49820_ can be queried in the method for information about the blockPlacement
+     * @return needs to return a BlockState, get a block state with stateDefinition.any().setValue(Property, Value);
+     */
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext p_49820_) {
+        BlockState blockState = this.stateDefinition.any();
         if (p_49820_.getNearestLookingDirection().getAxis() == Direction.Axis.Y) {
-            return this.stateDefinition.any().setValue(AXIS, Direction.Axis.Y);
+            blockState = this.stateDefinition.any().setValue(AXIS, Direction.Axis.Y);
         }
         else if (p_49820_.getNearestLookingDirection().getAxis() == Direction.Axis.X) {
-            return this.stateDefinition.any().setValue(AXIS, Direction.Axis.X);
+            blockState = this.stateDefinition.any().setValue(AXIS, Direction.Axis.X);
         }
         else if (p_49820_.getNearestLookingDirection().getAxis() == Direction.Axis.Z) {
-            return this.stateDefinition.any().setValue(AXIS, Direction.Axis.Z);
+            blockState = this.stateDefinition.any().setValue(AXIS, Direction.Axis.Z);
         }
-        return super.getStateForPlacement(p_49820_);
+        return blockState;
     }
+
+    /**
+     * @param p_60503_ BlockState
+     * @param p_60504_ Level
+     * @param p_60505_ BlockPos
+     * @param p_60506_ Player
+     * @param p_60507_ InteractionHand
+     * @param p_60508_ BlockHitResult
+     * @deprecated
+     */
+    @Override
+    public InteractionResult use(BlockState p_60503_, Level p_60504_, BlockPos p_60505_, Player p_60506_, InteractionHand p_60507_, BlockHitResult p_60508_) {
+        if (p_60504_.isClientSide()) {
+            return InteractionResult.SUCCESS;
+        }
+        return InteractionResult.FAIL;
+    }
+
+//    @Override
+//    public void playerWillDestroy(Level p_49852_, BlockPos p_49853_, BlockState p_49854_, Player p_49855_) {
+//        super.drops
+//    }
 }
