@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
-Specification-Title: examplemod
+Specification-Title: firstmod
 Specification-Vendor: examplemodsareus
 Specification-Version: 1
 Implementation-Title: ForgeMod-2.0
 Implementation-Version: 1.1
 Implementation-Vendor: examplemodsareus
-Implementation-Timestamp: 2022-01-25T22:11:39-0800
+Implementation-Timestamp: 2022-01-27T20:52:14-0800
 

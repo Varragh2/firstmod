@@ -1,17 +1,25 @@
 package com.darragh2.firstmod.common.block;
 
 import com.darragh2.firstmod.FirstMod;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ChestMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -20,9 +28,13 @@ import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
+
+
 public class RockBlock  extends Block {
 
     private static final Property<Direction.Axis> AXIS = BlockStateProperties.AXIS;
+    public static final String MESSAGE_ROCK = "message.rock";
 
     public RockBlock(Properties p_49795_) {
         super(p_49795_);
@@ -30,6 +42,7 @@ public class RockBlock  extends Block {
                 this.stateDefinition.any()
                         .setValue(AXIS, Direction.Axis.Y)
         );
+
     }
 
     @Override
@@ -56,6 +69,11 @@ public class RockBlock  extends Block {
             blockState = this.stateDefinition.any().setValue(AXIS, Direction.Axis.Z);
         }
         return blockState;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable BlockGetter reader, List<Component> list, TooltipFlag flags) {
+        list.add(new TranslatableComponent(MESSAGE_ROCK).withStyle(ChatFormatting.AQUA));
     }
 
     /**

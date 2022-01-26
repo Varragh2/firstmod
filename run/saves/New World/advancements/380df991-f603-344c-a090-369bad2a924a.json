@@ -221,6 +221,12 @@
     },
     "done": true
   },
+  "minecraft:story/iron_tools": {
+    "criteria": {
+      "iron_pickaxe": "2022-01-27 20:29:30 -0800"
+    },
+    "done": true
+  },
   "minecraft:recipes/decorations/granite_wall": {
     "criteria": {
       "has_granite": "2022-01-22 17:50:18 -0800"
@@ -272,6 +278,12 @@
   "minecraft:recipes/tools/spyglass": {
     "criteria": {
       "has_amethyst_shard": "2022-01-23 18:53:43 -0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/iron_nugget_from_blasting": {
+    "criteria": {
+      "has_iron_pickaxe": "2022-01-27 20:29:30 -0800"
     },
     "done": true
   },
@@ -561,6 +573,12 @@
     },
     "done": true
   },
+  "minecraft:recipes/misc/iron_nugget_from_smelting": {
+    "criteria": {
+      "has_iron_pickaxe": "2022-01-27 20:29:30 -0800"
+    },
+    "done": true
+  },
   "minecraft:recipes/redstone/spruce_trapdoor": {
     "criteria": {
       "has_planks": "2022-01-23 22:09:49 -0800"
@@ -570,6 +588,12 @@
   "minecraft:recipes/decorations/granite_wall_from_granite_stonecutting": {
     "criteria": {
       "has_granite": "2022-01-22 17:50:18 -0800"
+    },
+    "done": true
+  },
+  "firstmod:recipes/firstmod/powergen": {
+    "criteria": {
+      "rock": "2022-01-27 20:36:42 -0800"
     },
     "done": true
   },
