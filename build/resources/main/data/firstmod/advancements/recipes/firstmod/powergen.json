@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "firstmod:powergen"
+    ]
+  },
+  "criteria": {
+    "rock": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "firstmod:rock"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "firstmod:powergen"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "rock",
+      "has_the_recipe"
+    ]
+  ]
+}

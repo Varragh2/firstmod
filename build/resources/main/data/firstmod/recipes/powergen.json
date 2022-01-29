@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "firstmod",
+  "pattern": [
+    "rrr",
+    "x#x",
+    "#x#"
+  ],
+  "key": {
+    "x": {
+      "tag": "forge:dusts/redstone"
+    },
+    "#": {
+      "tag": "forge:ingots/iron"
+    },
+    "r": {
+      "item": "firstmod:rock"
+    }
+  },
+  "result": {
+    "item": "firstmod:powergen"
+  }
+}
