@@ -20,7 +20,8 @@ public class BlockStates extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         registerPowergen();
-        simpleBlock(Registration.ROCK.get());
+        //simpleBlock(Registration.ROCK.get());
+        simpleBlock(Registration.CHEST.get());
     }
 
     private void registerPowergen() {

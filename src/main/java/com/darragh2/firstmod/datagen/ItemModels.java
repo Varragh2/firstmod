@@ -14,8 +14,9 @@ public class ItemModels extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        withExistingParent(Registration.ROCK.get().getRegistryName().getPath(), modLoc("block/rock"));
-
         withExistingParent(Registration.POWERGEN_ITEM.get().getRegistryName().getPath(), modLoc("block/powergen/main"));
+
+        //withExistingParent(Registration.ROCK.get().getRegistryName().getPath(), modLoc("block/rock"));
+        withExistingParent(Registration.CHEST.get().getRegistryName().getPath(), modLoc("block/chest"));
     }
 }

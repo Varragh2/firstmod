@@ -1,7 +1,10 @@
 {
+  "block.firstmod.chest": "My Chest",
   "block.firstmod.powergen": "Power generator",
   "block.firstmod.rock": "Rock",
   "itemGroup.firstmod": "Firstmod",
   "message.powergen": "Power generator generating %s per tick!",
+  "message.rock": "A Rock (in aqua!)",
+  "screen.chest": "My Chest",
   "screen.tutorial.powergen": "Power generator"
 }

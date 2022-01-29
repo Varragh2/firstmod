@@ -1,40 +1,120 @@
 package com.darragh2.firstmod.common.containers;
 
-import com.darragh2.firstmod.setup.Registration;
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.SlotItemHandler;
-import net.minecraftforge.items.wrapper.InvWrapper;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
 
 public class ChestContainer extends AbstractContainerMenu {
+    private static final int SLOTS_PER_ROW = 9;
+    private final Container container;
+    private final int containerRows;
 
-    private BlockEntity blockEntity;
-    private Player playerEntity;
-    private IItemHandler playerInventory;
+    private ChestContainer(MenuType<?> p_39224_, int p_39225_, Inventory p_39226_, int p_39227_) {
+        this(p_39224_, p_39225_, p_39226_, new SimpleContainer(9 * p_39227_), p_39227_);
+    }
 
-    public ChestContainer(int windowId, BlockPos pos, Inventory playerInventory, Player player) {
-        super(Registration.CHEST_CONTAINER.get(), windowId);
-        blockEntity = player.getCommandSenderWorld().getBlockEntity(pos);
-        this.playerEntity = player;
-        this.playerInventory = new InvWrapper(playerInventory);
+    public static ChestContainer oneRow(int p_39235_, Inventory p_39236_) {
+        return new ChestContainer(MenuType.GENERIC_9x1, p_39235_, p_39236_, 1);
+    }
 
-        if (blockEntity != null) {
-           blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent( h -> {
-               addSlot(new SlotItemHandler(h, 0, 64, 24));
-           });
+    public static ChestContainer twoRows(int p_39244_, Inventory p_39245_) {
+        return new ChestContainer(MenuType.GENERIC_9x2, p_39244_, p_39245_, 2);
+    }
+
+    public static ChestContainer threeRows(int p_39256_, Inventory p_39257_) {
+        return new ChestContainer(MenuType.GENERIC_9x3, p_39256_, p_39257_, 3);
+    }
+
+    public static ChestContainer fourRows(int p_39259_, Inventory p_39260_) {
+        return new ChestContainer(MenuType.GENERIC_9x4, p_39259_, p_39260_, 4);
+    }
+
+    public static ChestContainer fiveRows(int p_39263_, Inventory p_39264_) {
+        return new ChestContainer(MenuType.GENERIC_9x5, p_39263_, p_39264_, 5);
+    }
+
+    public static ChestContainer sixRows(int p_39267_, Inventory p_39268_) {
+        return new ChestContainer(MenuType.GENERIC_9x6, p_39267_, p_39268_, 6);
+    }
+
+    public static ChestContainer threeRows(int p_39238_, Inventory p_39239_, Container p_39240_) {
+        return new ChestContainer(MenuType.GENERIC_9x3, p_39238_, p_39239_, p_39240_, 3);
+    }
+
+    public static ChestContainer sixRows(int p_39247_, Inventory p_39248_, Container p_39249_) {
+        return new ChestContainer(MenuType.GENERIC_9x6, p_39247_, p_39248_, p_39249_, 6);
+    }
+
+
+    public ChestContainer(MenuType<?> menuType, int windowId, Inventory inv, Container container, int containerRows) {
+        super(menuType, windowId);
+        checkContainerSize(container, containerRows * 9);
+        this.container = container;
+        this.containerRows = containerRows;
+        container.startOpen(inv.player);
+        int i = (this.containerRows - 4) * 18;
+
+        for(int j = 0; j < this.containerRows; ++j) {
+            for(int k = 0; k < 9; ++k) {
+                this.addSlot(new Slot(container, k + j * 9, 8 + k * 18, 18 + j * 18));
+            }
         }
+
+        for(int l = 0; l < 3; ++l) {
+            for(int j1 = 0; j1 < 9; ++j1) {
+                this.addSlot(new Slot(inv, j1 + l * 9 + 9, 8 + j1 * 18, 103 + l * 18 + i));
+            }
+        }
+
+        for(int i1 = 0; i1 < 9; ++i1) {
+            this.addSlot(new Slot(inv, i1, 8 + i1 * 18, 161 + i));
+        }
+
     }
 
-    @Override
-    public boolean stillValid(Player p_38874_) {
-        return false;
+    public boolean stillValid(Player p_39242_) {
+        return this.container.stillValid(p_39242_);
     }
 
+    public ItemStack quickMoveStack(Player p_39253_, int p_39254_) {
+        ItemStack itemstack = ItemStack.EMPTY;
+        Slot slot = this.slots.get(p_39254_);
+        if (slot != null && slot.hasItem()) {
+            ItemStack itemstack1 = slot.getItem();
+            itemstack = itemstack1.copy();
+            if (p_39254_ < this.containerRows * 9) {
+                if (!this.moveItemStackTo(itemstack1, this.containerRows * 9, this.slots.size(), true)) {
+                    return ItemStack.EMPTY;
+                }
+            } else if (!this.moveItemStackTo(itemstack1, 0, this.containerRows * 9, false)) {
+                return ItemStack.EMPTY;
+            }
+
+            if (itemstack1.isEmpty()) {
+                slot.set(ItemStack.EMPTY);
+            } else {
+                slot.setChanged();
+            }
+        }
+
+        return itemstack;
+    }
+
+    public void removed(Player p_39251_) {
+        super.removed(p_39251_);
+        this.container.stopOpen(p_39251_);
+    }
+
+    public Container getContainer() {
+        return this.container;
+    }
+
+    public int getRowCount() {
+        return this.containerRows;
+    }
 }

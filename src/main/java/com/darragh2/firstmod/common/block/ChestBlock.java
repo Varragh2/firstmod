@@ -1,6 +1,8 @@
 package com.darragh2.firstmod.common.block;
 
 import com.darragh2.firstmod.common.containers.ChestContainer;
+import com.darragh2.firstmod.setup.Registration;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -11,7 +13,11 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BarrelBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.SoundType;
@@ -22,20 +28,27 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
+
 
 public class ChestBlock extends Block implements EntityBlock {
 
     public static final String CHEST_SCREEN = "screen.chest";
+    public static final String CHEST_MESSAGE = "message.chest";
 
 
     public ChestBlock() {
         super(Properties.of(Material.WOOD)
                 .strength(1f)
                 .sound(SoundType.WOOD)
-                .requiresCorrectToolForDrops()
+                //.requiresCorrectToolForDrops()
         );
     }
 
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable BlockGetter reader, List<Component> list, TooltipFlag flags) {
+        list.add(new TranslatableComponent(CHEST_MESSAGE).withStyle(ChatFormatting.BOLD));
+    }
 
     @Nullable
     @Override
@@ -58,7 +71,7 @@ public class ChestBlock extends Block implements EntityBlock {
                     @Nullable
                     @Override
                     public AbstractContainerMenu createMenu(int windowId, Inventory inv, Player playerEntity) {
-                        return new ChestContainer(windowId, blockPos, inv, playerEntity);
+                        return new ChestContainer(Registration.CHEST_CONTAINER.get(), windowId, inv, inv, inv.getContainerSize());
                     }
                 };
                 NetworkHooks.openGui((ServerPlayer) player, container, be.getBlockPos());

@@ -1,6 +1,7 @@
 package com.darragh2.firstmod.datagen;
 
 import com.darragh2.firstmod.FirstMod;
+import com.darragh2.firstmod.common.block.ChestBlock;
 import com.darragh2.firstmod.common.block.PowergenBlock;
 import com.darragh2.firstmod.common.block.RockBlock;
 import com.darragh2.firstmod.setup.ModSetup;
@@ -22,5 +23,9 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
 
         add(Registration.ROCK.get(), "Rock");
         add(RockBlock.MESSAGE_ROCK, "A Rock (in aqua!)");
+
+        add(Registration.CHEST.get(), "My Chest");
+        add(ChestBlock.CHEST_SCREEN, "My Chest");
+        add(ChestBlock.CHEST_MESSAGE, "This Chest is cool");
     }
 }

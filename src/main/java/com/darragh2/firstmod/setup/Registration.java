@@ -1,20 +1,16 @@
 package com.darragh2.firstmod.setup;
 
 import com.darragh2.firstmod.FirstMod;
-import com.darragh2.firstmod.common.block.ChestBlock;
 import com.darragh2.firstmod.common.block.PowergenBlock;
 import com.darragh2.firstmod.common.block.RockBlock;
 import com.darragh2.firstmod.common.block.entity.ChestBlockEntity;
-import com.darragh2.firstmod.common.block.entity.PowergenBlockEntity;
 import com.darragh2.firstmod.common.containers.ChestContainer;
 import com.darragh2.firstmod.common.containers.PowergenContainer;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
@@ -24,8 +20,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import javax.swing.*;
 
 
 public class Registration {
@@ -58,7 +52,7 @@ public class Registration {
 
     public static final RegistryObject<PowergenBlock> POWERGEN = BLOCKS.register("powergen", PowergenBlock::new);
     public static final RegistryObject<Item> POWERGEN_ITEM = fromBlock(POWERGEN);
-    public static final RegistryObject<BlockEntityType<PowergenBlockEntity>> POWERGEN_BLOCKENTITY = BLOCK_ENTITIES.register("powergen", () -> BlockEntityType.Builder.of(PowergenBlockEntity::new, POWERGEN.get()).build(null));
+    public static final RegistryObject<BlockEntityType<ChestBlockEntity>> POWERGEN_BLOCKENTITY = BLOCK_ENTITIES.register("powergen", () -> BlockEntityType.Builder.of(ChestBlockEntity::new, POWERGEN.get()).build(null));
     public static final RegistryObject<MenuType<PowergenContainer>> POWERGEN_CONTAINER = CONTAINERS.register("powergen",
             () -> IForgeMenuType.create(((windowId, inv, data) -> new PowergenContainer(windowId, data.readBlockPos(), inv, inv.player))));
 
@@ -66,7 +60,7 @@ public class Registration {
     public static final RegistryObject<Item> CHEST_ITEM = fromBlock(CHEST);
     public static final RegistryObject<BlockEntityType<ChestBlockEntity>> CHEST_BLOCKENTITY = BLOCK_ENTITIES.register("chest", () -> BlockEntityType.Builder.of(ChestBlockEntity::new, CHEST.get()).build(null));
     public static final RegistryObject<MenuType<ChestContainer>> CHEST_CONTAINER = CONTAINERS.register("chest",
-            () -> IForgeMenuType.create(((windowId, inv, data) -> new ChestContainer(windowId, data.readBlockPos(), inv, inv.player))));
+            () -> IForgeMenuType.create(((windowId, inv, data) -> new ChestContainer(Registration.CHEST_CONTAINER.get(), windowId, inv, inv, inv.getContainerSize()))));
 
 
     public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block) {

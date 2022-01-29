@@ -1,6 +1,6 @@
 package com.darragh2.firstmod.common.block;
 
-import com.darragh2.firstmod.common.block.entity.PowergenBlockEntity;
+import com.darragh2.firstmod.common.block.entity.ChestBlockEntity;
 import com.darragh2.firstmod.common.containers.PowergenContainer;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -74,7 +74,7 @@ public class PowergenBlock extends Block implements EntityBlock {
      */
     @Override
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter reader, List<Component> list, TooltipFlag flags) {
-        list.add(new TranslatableComponent(MESSAGE_POWERGEN, Integer.toString(PowergenBlockEntity.POWERGEN_GENERATE))
+        list.add(new TranslatableComponent(MESSAGE_POWERGEN, Integer.toString(ChestBlockEntity.POWERGEN_GENERATE))
                 .withStyle(ChatFormatting.BLUE));
     }
 
@@ -87,7 +87,7 @@ public class PowergenBlock extends Block implements EntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return new PowergenBlockEntity(blockPos, blockState);
+        return new ChestBlockEntity(blockPos, blockState);
     }
 
     /**
@@ -105,7 +105,7 @@ public class PowergenBlock extends Block implements EntityBlock {
             return null;
         }
         return (lvl, pos, blockState, t) -> {
-            if (t instanceof PowergenBlockEntity tile) {
+            if (t instanceof ChestBlockEntity tile) {
                 tile.tickServer();
             }
         };
@@ -147,7 +147,7 @@ public class PowergenBlock extends Block implements EntityBlock {
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult trace) {
         if (!level.isClientSide) {
             BlockEntity be = level.getBlockEntity(pos);
-            if (be instanceof PowergenBlockEntity) {
+            if (be instanceof ChestBlockEntity) {
                 MenuProvider containerProvider = new MenuProvider() {
                     //creates a object then overrides methods of the parent class
                     @Override
